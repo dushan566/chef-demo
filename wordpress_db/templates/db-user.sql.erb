@@ -1,0 +1,11 @@
+CREATE DATABASE wordpress_db;
+
+DROP DATABASE test;
+
+CREATE USER 'wpuser'@'localhost' IDENTIFIED BY 'wp123456';
+
+GRANT ALL ON wordpress_db.* TO 'wpuser'@'localhost';
+
+FLUSH PRIVILEGES;
+
+exit

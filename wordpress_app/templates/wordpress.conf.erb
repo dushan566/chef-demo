@@ -1,0 +1,15 @@
+listen <%= node['wordpress_app']['app_port'] %>
+DirectoryIndex index.php
+<VirtualHost *:<%= node['wordpress_app']['app_port']%>>
+  ServerAdmin webmaster@<%= node['wordpress_app']['domain_name'] %>
+  DocumentRoot "<%= node['wordpress_app']['document_root'] %>"
+  ServerName "<%= node['wordpress_app']['domain_name'] %>"
+  ErrorLog "logs/<%= node['wordpress_app']['domain_name']%>-error_log"
+  TransferLog "logs/<%= node['wordpress_app']['domain_name']%>-access_log"
+</VirtualHost>
+
+<Directory "<%= node['wordpress_app']['document_root'] %>">
+AllowOverride None
+    Order Allow,Deny
+    Allow from all
+</Directory>

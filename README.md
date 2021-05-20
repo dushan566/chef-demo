@@ -12,7 +12,6 @@ Roles can be use to create identical server sets at once.
 
 Roles uses to overwrite default attributes in cookbooks. Because roles has high priority than cookbooks’ default attributes.
 
-roles1
 
 This is a sample role file in JSON format for webserver cookbook to overwite default attributes to port 9090 & domain as dushan.com
 

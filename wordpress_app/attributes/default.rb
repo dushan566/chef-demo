@@ -1,0 +1,8 @@
+default['wordpress_app']['document_root'] = '/var/www/html/wordpress.example.com'
+default['wordpress_app']['domain_name'] = 'wordpress.example.com'
+default['wordpress_app']['app_port'] = '8080'
+default['wordpress_app']['dbname'] = 'wordpress_db'
+default['wordpress_app']['host'] = '127.0.0.1'
+default['wordpress_app']['root_username'] = 'root'
+default['wordpress_app']['admin_username'] = 'wpuser'
+default['wordpress_app']['admin_password'] = 'wpuser123456'

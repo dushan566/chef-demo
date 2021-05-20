@@ -1,0 +1,71 @@
+================================================================================
+ Error executing action `create` on resource 'template[/var/www/html/WP/wp-config.php]'
+ ================================================================================
+
+ Chef::Mixin::Template::TemplateError
+ ------------------------------------
+ undefined local variable or method `password_data_bag_item' for #<Chef::Mixin::Template::TemplateContext:0x000000044edd98>
+
+ Resource Declaration:
+ ---------------------
+ # In /var/chef/cache/cookbooks/wordpress_app/recipes/default.rb
+
+  44: template '/var/www/html/WP/wp-config.php' do
+  45:   source 'wp-config.php.erb'
+  46:   owner 'root'
+  47:   group 'root'
+  48:   mode '0644'
+  49:   variables :pool_lb_members => pool_lb_members.uniq
+  50: end
+  51:
+
+ Compiled Resource:
+ ------------------
+ # Declared in /var/chef/cache/cookbooks/wordpress_app/recipes/default.rb:44:in `from_file'
+
+ template("/var/www/html/WP/wp-config.php") do
+   action [:create]
+   retries 0
+   retry_delay 2
+   default_guard_interpreter :default
+   source "wp-config.php.erb"
+   variables {:pool_lb_members=>[]}
+   declared_type :template
+   cookbook_name "wordpress_app"
+   recipe_name "default"
+   owner "root"
+   group "root"
+   mode "0644"
+   atomic_update true
+   path "/var/www/html/WP/wp-config.php"
+ end
+
+ Template Context:
+ -----------------
+ on line #10
+   8:
+   9: /** MySQL database password */
+  10: /** # define('DB_PASSWORD', '<%= password password_data_bag_item['admin_password'] %>'); */
+  11: define('DB_PASSWORD', '<%= node['wordpress_app']['admin_password'] %>');
+  12:
+
+ Platform:
+ ---------
+ x86_64-linux
+
+
+Running handlers:
+[2016-04-14T15:18:57-04:00] ERROR: Running exception handlers
+Running handlers complete
+[2016-04-14T15:18:57-04:00] ERROR: Exception handlers complete
+Chef Client failed. 6 resources updated in 22 seconds
+[2016-04-14T15:18:57-04:00] FATAL: Stacktrace dumped to /var/chef/cache/chef-stacktrace.out
+[2016-04-14T15:18:57-04:00] FATAL: Please provide the contents of the stacktrace.out file if you file a bug report
+[2016-04-14T15:18:57-04:00] ERROR:
+
+Chef::Mixin::Template::TemplateError (undefined local variable or method `password_data_bag_item' for #<Chef::Mixin::Template::TemplateContext:0x000000044edd98>) on line #10:
+
+8:
+9: /** MySQL database password */
+10: /** # define('DB_PASSWORD', '<%= password password_data_bag_item['admin_password'] %>'); */
+11: define('DB_PASSWORD', '<%= node['wordpress_app']['admin_password'] %>');

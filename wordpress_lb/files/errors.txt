@@ -1,0 +1,32 @@
+45.55.227.242     ------------------
+45.55.227.242     # Declared in /var/chef/cache/cookbooks/wordpress_lb/recipes/default.rb:10:in `from_file'
+45.55.227.242
+45.55.227.242     template("/etc/haproxy/haproxy.cfg") do
+45.55.227.242       action [:create]
+45.55.227.242       retries 0
+45.55.227.242       retry_delay 2
+45.55.227.242       default_guard_interpreter :default
+45.55.227.242       source "wordpress_lb.cfg.erb"
+45.55.227.242       variables {:pool_db_members=>[]}
+45.55.227.242       declared_type :template
+45.55.227.242       cookbook_name "wordpress_lb"
+45.55.227.242       recipe_name "default"
+45.55.227.242       owner "root"
+45.55.227.242       group "root"
+45.55.227.242       mode "0644"
+45.55.227.242       atomic_update true
+45.55.227.242       path "/etc/haproxy/haproxy.cfg"
+45.55.227.242     end
+45.55.227.242
+45.55.227.242     Template Context:
+45.55.227.242     -----------------
+45.55.227.242     on line #24
+45.55.227.242      22:   balance roundrobin
+45.55.227.242      23:   maxconn 20000 #(no need this if you define in globle settings)
+45.55.227.242      24:   <% @pool_app_members.each do |member| -%>
+45.55.227.242      25:   server <%= member[:hostname] %> <%= member[:ipaddress] %>:8080 weight 1 maxconn 50 check
+45.55.227.242      26:   <% end -%>
+45.55.227.242
+45.55.227.242     Platform:
+45.55.227.242     ---------
+45.55.227.242     x86_64-linux
